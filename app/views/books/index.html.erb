@@ -1,0 +1,28 @@
+<div class="inner-wrapper-container">
+  <%= link_to 'My Blog', controller: 'books' %>
+
+<h1>Listing Books</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th class="span2" style="text-align:center">ISBN</th>
+    <th class="span2" style="text-align:center">Title</th>
+    <th class="span4">Description</th>
+    <th class="span2" style="text-align:center">Action</th>
+  </tr>
+
+  <% @books.each do |book| %>
+      <tr>
+        <td style="text-align:center"><%= book.isbn %></td>
+        <td style="text-align:center"><%= book.title %></td>
+        <td><%= book.description %></td>
+        <td style="text-align:center"><%= link_to 'Show', book_path(book) %>&nbsp   <%= link_to 'Edit', edit_book_path(book) %>&nbsp
+        <%= link_to 'Destroy', book_path(book),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Add New Book', new_book_path %>
+    </div>
